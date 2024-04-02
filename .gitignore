@@ -37,3 +37,6 @@ next-env.d.ts
 .env
 backup.json
 backup.ndjson
+
+#VSCODE
+.vscode/
