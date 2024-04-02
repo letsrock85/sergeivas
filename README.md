@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-<h1>victoreke.com</h1>
+<h1>sergeivas.com</h1>
 <p>My personal portfolio website</p>
 </div>
 
