@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Metadata } from "next";
 import { profileQuery } from "@/lib/sanity.query";
 import type { ProfileType } from "@/types";
@@ -10,15 +11,17 @@ import Usage from "../components/pages/Usage";
 import { Slide } from "../animation/Slide";
 import { sanityFetch } from "@/lib/sanity.client";
 import PageHeading from "@/app/components/shared/PageHeading";
+import ProjectsPage from '../projects/page'; // Путь может отличаться в зависимости от структуры вашего проекта
+import BlogPage from '../blog/page';
 
 export const metadata: Metadata = {
-  title: "About | Victor Eke",
-  metadataBase: new URL("https://victoreke.com/about"),
+  title: "About | Sergei Vasilevich",
+  metadataBase: new URL("https://sergeivas.com/about"),
   description:
     "Learn more about my skills, experience and technical background",
   openGraph: {
-    title: "About | Victor Eke",
-    url: "https://victoreke.com/about",
+    title: "About | Sergei Vasilevich",
+    url: "https://sergeivas.com/about",
     description:
       "Learn more about my skills, experience and technical background",
     images:
@@ -54,7 +57,9 @@ export default async function About() {
                 </Slide>
               </div>
 
-              <aside className="flex flex-col lg:justify-self-center justify-self-start gap-y-8 lg:order-1 order-none mb-12">
+              
+
+              <aside className="flex flex-col lg:justify-self-center justify-self-auto gap-y-8 lg:order-1 order-none mb-12">
                 <Slide delay={0.1}>
                   <div className="sticky top-10">
                     <Image
@@ -103,6 +108,7 @@ export default async function About() {
                 </Slide>
               </aside>
             </section>
+            <BlogPage />
             <Slide delay={0.14}>
               <Usage />
             </Slide>
