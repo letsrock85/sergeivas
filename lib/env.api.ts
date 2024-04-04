@@ -19,6 +19,11 @@ export const mode = process.env.NODE_ENV;
 export const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2023-07-21";
 
+export const discucRepoName = checkValue(
+  process.env.NEXT_PUBLIC_GISCUS_REPO,
+  "NEXT_PUBLIC_GISCUS_REPO"
+);
+
 export const giscusRepoId = checkValue(
   process.env.NEXT_PUBLIC_GISCUS_REPOID,
   "NEXT_PUBLIC_GISCUS_REPOID"

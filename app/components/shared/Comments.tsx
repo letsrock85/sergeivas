@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import Giscus from "@giscus/react";
-import { giscusRepoId, giscusCategoryId } from "@/lib/env.api";
+import { giscusRepoId, discucRepoName, giscusCategoryId } from "@/lib/env.api";
 
 export default function Comments() {
   const theme = useTheme();
@@ -16,7 +16,7 @@ export default function Comments() {
   return (
     <Giscus
       id="comments"
-      repo="evavic44/victoreke.com"
+      repo="letsrock85/sergeivas"
       repoId={giscusRepoId}
       category="Announcements"
       categoryId={giscusCategoryId}

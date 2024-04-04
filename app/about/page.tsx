@@ -12,7 +12,8 @@ import { Slide } from "../animation/Slide";
 import { sanityFetch } from "@/lib/sanity.client";
 import PageHeading from "@/app/components/shared/PageHeading";
 import ProjectsPage from '../projects/page'; // Путь может отличаться в зависимости от структуры вашего проекта
-import BlogPage from '../blog/page';
+import BlogSection from '../components/pages/ThreePosts';
+import FeatutedPosts from '../components/pages/FeaturedPosts';
 
 export const metadata: Metadata = {
   title: "About | Sergei Vasilevich",
@@ -108,7 +109,7 @@ export default async function About() {
                 </Slide>
               </aside>
             </section>
-            <BlogPage />
+            <BlogSection />
             <Slide delay={0.14}>
               <Usage />
             </Slide>
