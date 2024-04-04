@@ -40,5 +40,8 @@
     "next-sanity-image": "^6.1.0",
     "next-themes": "^0.2.1",
     "react-refractor": "^2.1.7"
+  },
+  "overrides": {
+    "styled-components": "^6.1.8"
   }
 }
