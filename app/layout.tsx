@@ -62,7 +62,7 @@ export default function RootLayout({
       </body>
       <Script
         async
-        src="ttps://analytics.us.umami.is/script.js"
+        src="https://analytics.us.umami.is/script.js"
         data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || ""}
       />
     </html>
