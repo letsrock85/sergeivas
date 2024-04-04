@@ -86,7 +86,7 @@ export default async function Post({ params }: Props) {
     qParams: { slug },
   });
 
-  const words = toPlainText(post.body);
+  const words = post.body ? toPlainText(post.body) : 'No Data.';
 
   if (!post) {
     notFound();

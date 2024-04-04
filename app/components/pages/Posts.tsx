@@ -55,7 +55,7 @@ const Posts = async ({ max }:PostsProps) => {
                         <HiCalendar />
                         <time dateTime={post.date || post._createdAt}>{formatDate(post.date || post._createdAt)}</time>
                         <BiSolidTime />
-                        <span>{readTime(toPlainText(post.body))}</span>
+                        <span>{post.body ? readTime(toPlainText(post.body)) : 'No Data.'}</span>
                       </div>
                     </div>
                 </Link>

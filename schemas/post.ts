@@ -93,6 +93,7 @@ export default defineType({
       title: "Post Body",
       type: "blockContent",
       description: "Write your post content here",
+      validation: (Rule) => Rule.required().min(1).error("The post body is required and cannot be empty"),
     }),
     defineField({
       name: "isPublished",
