@@ -10,7 +10,7 @@ export const dataset: string = checkValue(
 
 export const token = checkValue(
   process.env.SANITY_ACCESS_TOKEN,
-  "NEXT_PUBLIC_SANITY_ACCESS_TOKEN"
+  "SANITY_ACCESS_TOKEN"
 );
 
 export const hookSecret = process.env.NEXT_PUBLIC_SANITY_HOOK_SECRET;
