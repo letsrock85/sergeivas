@@ -15,6 +15,8 @@ const fallbackImage = "https://res.cloudinary.com/victoreke/image/upload/v169260
 // Определяем интерфейс для пропсов
 interface PostsProps {
   max?: number;
+  min?: string;
+  fax?: number;
 }
 
 // Изменяем компонент, чтобы он принимал пропс `max`
@@ -67,7 +69,9 @@ const Posts = async ({ max }:PostsProps) => {
         <EmptyState value="Blog Post" />
       )}
     </section>
+    
   );
+  <div>aaaa</div>
 };
 
 export default Posts;

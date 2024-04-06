@@ -13,6 +13,7 @@ import { sanityFetch } from "@/lib/sanity.client";
 import PageHeading from "@/app/components/shared/PageHeading";
 import ProjectsPage from '../projects/page'; // Путь может отличаться в зависимости от структуры вашего проекта
 import Posts from '../components/pages/Posts';
+import StaticTextSection from '../components/pages/StaticTextSection';
 
 export const metadata: Metadata = {
   title: "About | Sergei Vasilevich",
@@ -36,6 +37,8 @@ export default async function About() {
   });
 
   return (
+    <>
+    {/* <main className="relative lg:max-w-7xl mx-auto max-w-3xl md:px-16 px-6"> */}
     <main className="relative lg:max-w-7xl mx-auto max-w-3xl md:px-16 px-6">
       {profile &&
         profile.map((data) => (
@@ -108,13 +111,17 @@ export default async function About() {
                 </Slide>
               </aside>
             </section>
-            <Posts max={1} />
-            <Slide delay={0.14}>
+            <Posts max={1} fax={2} />
+            {/* <Slide delay={0.14}>
               <Usage />
             </Slide>
-            <Heroes />
+            <Heroes /> */}
           </div>
         ))}
     </main>
+    <Slide delay={0.34}>
+      <StaticTextSection />
+    </Slide>    
+    </>
   );
 }
