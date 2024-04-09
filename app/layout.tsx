@@ -17,7 +17,7 @@ const inter = Inter({
 const options = {
   title: "Sergei Vasilevich | Software Developer",
   description:
-    "You are the leader of a team of developers and artists specializing in AI, business intelligence, and content creation. Your passion and expertise in IT solutions and development help bring the boldest ideas to life",
+    "I'm a leader of a team of developers and artists specializing in AI, business intelligence, and content creation. My passion and expertise in IT solutions and development help bring the boldest ideas to life",
   url: "https://sergeivas.com",
   ogImage:
     "https://res.cloudinary.com/victoreke/image/upload/v1692635746/victoreke/og.png",
