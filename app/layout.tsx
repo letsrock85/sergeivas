@@ -60,11 +60,12 @@ export default function RootLayout({
           <Footer />
         </Providers>
       </body>
-      <Script
+      {/* <Script
         async
         src="https://umami-for-traffic-analytics.vercel.app/script.js"
         data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || ""}
-      />
+      /> */}
+      <Script async defer src="https://stats.sergeivas.com/tracker.js" data-website-id="cluvqnimm0001mt4b4uhegi86"></Script>
     </html>
   );
 }
