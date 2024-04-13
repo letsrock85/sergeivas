@@ -12,7 +12,7 @@ import {
 } from "react-icons/hi";
 import Logo from "../../../public/logo.png";
 
-export default function MobileMenu() {
+export default function MobileMenu({ onOpen, show }: { onOpen: () => void, show: boolean }) {
   const [navShow, setNavShow] = useState(false);
   const data = [
     {
@@ -43,6 +43,7 @@ export default function MobileMenu() {
         document.body.style.overflow = "auto";
       } else {
         document.body.style.overflow = "hidden";
+        //onOpen(); // вызываем setShow(true) при открытии меню
       }
       return !status;
     });
@@ -59,7 +60,7 @@ export default function MobileMenu() {
       </button>
       <div
         className={`md:hidden fixed left-0 top-0 z-10 h-full w-full transform duration-[600ms] ease-[cubic-bezier(0.7,0,0,1)] dark:bg-zinc-900 bg-white ${
-          navShow ? "translate-x-0 rounded-none" : "translate-x-full"
+          navShow && show ? "translate-x-0 rounded-none" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between mt-6 px-8">
