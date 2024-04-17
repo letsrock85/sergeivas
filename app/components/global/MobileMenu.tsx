@@ -52,14 +52,14 @@ export default function MobileMenu() {
       if (status) {
         // document.body.classList.add('overflow-x-auto');
         // document.body.classList.add('overflow-x-hidden');
-        // document.body.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
         document.body.classList.add('overflow-auto');
         // document.body.style.overflow = "auto"; 
       } else {
         // document.body.classList.remove('overflow-x-auto');
         // document.body.style.overflow = "hidden";
         document.body.classList.remove('overflow-auto');
-        // document.body.classList.add('overflow-hidden');
+        document.body.classList.add('overflow-hidden');
         //onOpen(); // вызываем setShow(true) при открытии меню
       }
       return !status;
