@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/logo.png";
@@ -27,32 +27,39 @@ export default function Navbar() {
     },
   ];
 
-  const [show, setShow] = useState(true);
+  const navbarRef = useRef<HTMLElement>(null);
+  const [navbarHeight, setNavbarHeight] = useState(0);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [visible, setVisible] = useState(true);
 
-  // const controlNavbar = () => {
-  //   if (window.scrollY > lastScrollY) {
-  //     setShow(false);
-  //   } else {
-  //     setShow(true);
-  //   }
-  //   setLastScrollY(window.scrollY);
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", controlNavbar);
-  //   return () => {
-  //     window.removeEventListener("scroll", controlNavbar);
-  //   };
-  // }, [lastScrollY]);
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > (navbarRef.current?.offsetHeight ?? 0)) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+  
+    // Ensure we calculate the height after the component has mounted
+    if (navbarRef.current) {
+      setNavbarHeight(navbarRef.current.offsetHeight);
+    }
+  
+    window.addEventListener('scroll', handleScroll);
+  
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+  
 
   return (
     <UnmountStudio>
-      <header className={`text-sm py-6 md:px-16 px-6 border-b dark:border-zinc-800 border-zinc-200 z-30 md:mb-28 mb-10 md:sticky top-0 shadow-sm transition-all duration-500 ${
-          show ? "md:translate-y-0" : "md:-translate-y-full"
-        }`}>
+      <header ref={navbarRef} className={`text-sm py-6 md:px-16 px-6 border-b dark:border-zinc-800 border-zinc-200 z-30 md:mb-28 mb-10 md:sticky md:top-0 shadow-sm transition-all duration-500 ${visible ? 'md:translate-y-0' : 'md:-translate-y-full'}`}>
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/">
-            <Image src={Logo} width={35} height={35} alt="logo" />
+            <Image src={Logo} width={35} height={35} alt="logo" priority />
           </Link>
 
           <nav className="md:block hidden">
@@ -72,7 +79,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-x-4">
             <Theme />
-            <MobileMenu  />
+            <MobileMenu />
           </div>
         </div>
       </header>
