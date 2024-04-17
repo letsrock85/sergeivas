@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import {
   HiBeaker,
@@ -37,7 +37,15 @@ export default function MobileMenu() {
     },
   ];
 
-  document.body.classList.add('overflow-x-hidden');
+  useEffect(() => {
+    // This will run after the component has mounted, ensuring 'document' is available.
+    document.body.classList.add('overflow-x-hidden');
+
+    return () => {
+      // This cleanup function will run when the component unmounts
+      document.body.classList.remove('overflow-x-hidden');
+    }
+  }, []);
 
   const onToggleNav = () => {
     setNavShow((status) => {
