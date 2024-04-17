@@ -77,7 +77,7 @@ export default function MobileMenu() {
       </button>
       <div
         className={`md:hidden fixed left-0 top-0 z-10 h-screen w-full transition-transform duration-[500ms] ease-in-out dark:bg-zinc-900 bg-white ${
-          navShow ? "sm:translate-x-0 rounded-none" : "sm:translate-x-full"
+          navShow ? "translate-x-0 rounded-none" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between mt-6 px-8">
