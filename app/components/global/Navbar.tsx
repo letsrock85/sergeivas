@@ -56,7 +56,7 @@ export default function Navbar() {
 
   return (
     <UnmountStudio>
-      <header ref={navbarRef} className={`text-sm py-6 md:px-16 px-6 border-b dark:border-zinc-800 border-zinc-200 z-30 md:mb-28 mb-10 md:sticky md:top-0 shadow-sm transition-all duration-500 ${visible ? 'md:translate-y-0' : 'md:-translate-y-full'}`}>
+      <header ref={navbarRef} className={`text-sm py-6 md:px-16 px-6 border-b dark:border-zinc-800 border-zinc-200 z-30 md:mb-28 mb-10 sticky top-0 shadow-sm transition-transform duration-500 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/">
             <Image src={Logo} width={35} height={35} alt="logo" priority />
