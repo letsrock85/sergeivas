@@ -30,20 +30,20 @@ export default function Navbar() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  const controlNavbar = () => {
-    if (window.scrollY > lastScrollY) {
-      setShow(false);
-    } else {
-      setShow(true);
-    }
-    setLastScrollY(window.scrollY);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", controlNavbar);
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, [lastScrollY]);
+  // const controlNavbar = () => {
+  //   if (window.scrollY > lastScrollY) {
+  //     setShow(false);
+  //   } else {
+  //     setShow(true);
+  //   }
+  //   setLastScrollY(window.scrollY);
+  // };
+  // useEffect(() => {
+  //   window.addEventListener("scroll", controlNavbar);
+  //   return () => {
+  //     window.removeEventListener("scroll", controlNavbar);
+  //   };
+  // }, [lastScrollY]);
 
   return (
     <UnmountStudio>
@@ -72,7 +72,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-x-4">
             <Theme />
-            <MobileMenu show={show} onOpen={() => setShow(true)} />
+            <MobileMenu  />
           </div>
         </div>
       </header>
