@@ -26,37 +26,36 @@ export default function Navbar() {
       href: "/photos",
     },
   ];
-
+  const SCROLL_UP_THRESHOLD = 6;
   const navbarRef = useRef<HTMLElement>(null);
+
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const [navbarHeight, setNavbarHeight] = useState(0);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [visible, setVisible] = useState(true);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    // Only set state if scroll position changes to avoid unnecessary re-renders
+    if (currentScrollY > lastScrollY.current && currentScrollY > navbarHeight) {
+      isVisible && setIsVisible(false);
+    } else if (lastScrollY.current - currentScrollY > SCROLL_UP_THRESHOLD) { // Only show the navbar if scrolled up more than 100px
+      !isVisible && setIsVisible(true);
+    }
+    lastScrollY.current = currentScrollY;
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > (navbarRef.current?.offsetHeight ?? 0)) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-      setLastScrollY(currentScrollY);
-    };
-  
-    // Ensure we calculate the height after the component has mounted
-    if (navbarRef.current) {
-      setNavbarHeight(navbarRef.current.offsetHeight);
-    }
-  
+    setNavbarHeight(navbarRef.current?.offsetHeight || 0);
     window.addEventListener('scroll', handleScroll);
   
+    // Clean up event listener to prevent memory leaks
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [isVisible, navbarHeight]); // Only re-run effect if isVisible 
   
 
   return (
     <UnmountStudio>
-      <header ref={navbarRef} className={`text-sm py-6 md:px-16 px-6 border-b dark:border-zinc-800 border-zinc-200 z-30 md:mb-28 mb-10 sticky top-0 shadow-sm transition-transform duration-500 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
+      <header ref={navbarRef} className={`text-sm py-6 md:px-16 px-6 border-b dark:border-zinc-800 border-zinc-200 z-30 md:mb-28 mb-10 sticky top-0 shadow-sm transition-transform duration-500 ${isVisible  ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/">
             <Image src={Logo} width={35} height={35} alt="logo" priority />
