@@ -57,10 +57,10 @@ export default function Navbar() {
 
   return (
     <UnmountStudio>
-      <header ref={navbarRef} className={`text-sm py-6 md:px-16 px-6 border-b dark:border-zinc-800 border-zinc-200 z-30 md:mb-28 mb-10 sticky top-0 transition-transform duration-500 shadow-sm ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isTop ? 'bg-transparent' : 'bg-[#ebebeb]/70 dark:bg-zinc-900/70'}`}>
+      <header ref={navbarRef} className={`text-sm py-6 md:px-16 px-6 border-b dark:border-zinc-800 border-zinc-200 z-30 md:mb-28 mb-10 sticky top-0 translate-all duration-[400ms] shadow-sm ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'} ${isTop ? 'bg-transparent' : 'bg-[#ebebeb]/70 dark:bg-zinc-900/70'}`}>
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/">
-            <Image src={Logo} width={35} height={35} alt="logo" priority />
+            <Image src={Logo} width={158} height={35} alt="logo" priority />
           </Link>
 
           <nav className="md:flex hidden flex-1 justify-end ">
