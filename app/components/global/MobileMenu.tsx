@@ -18,9 +18,12 @@ export default function MobileMenu() {
   ];
 
   useEffect(() => {
+    
     if (navShow) {
+      document.body.style.overflow = 'hidden';
       setTimeout(() => setIsHidden(false), 100); // Delay to start animation
     } else {
+      document.body.style.overflow = '';
       setTimeout(() => setIsHidden(true), 300); // Wait for animation to finish
     }
   }, [navShow]);
@@ -31,7 +34,7 @@ export default function MobileMenu() {
       setTimeout(() => {
         setNavShow(true);
       }, 100); // Delay to allow hidden state change to apply
-    } else {
+    } else { 
       setNavShow(false);
       setTimeout(() => {
         setIsHidden(true);
