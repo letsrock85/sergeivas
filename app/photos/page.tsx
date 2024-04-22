@@ -39,7 +39,7 @@ export default function Photos() {
         description="This page is still under construction..."
       />
       <figure className="my-6">
-        <Slide delay={0.12} className="flex flex-wrap gap-2">
+        {/* <Slide delay={0.12} className="flex flex-wrap gap-2">
           {images.map((image) => (
             <Image
               key={image.id}
@@ -50,7 +50,7 @@ export default function Photos() {
               className="bg-secondary-bg dark:bg-primary-bg"
             />
           ))}
-        </Slide>
+        </Slide> */}
       </figure>
     </main>
   );
