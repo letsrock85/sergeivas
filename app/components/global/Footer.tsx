@@ -7,17 +7,17 @@ import UnmountStudio from "./Unmount";
 export default function Footer() {
   return (
     <UnmountStudio>
-      <footer className="border-t dark:border-zinc-800 border-zinc-100 mt-44 lg:min-h-[250px] min-h-full relative">
-        <div className="max-w-7xl mx-auto flex lg:flex-row flex-col items-center lg:justify-between justify-center gap-y-4 md:px-16 px-6 py-16">
+      <footer className="relative border-zinc-100 dark:border-zinc-800 mt-44 border-t min-h-full lg:min-h-[250px]">
+        <div className="flex lg:flex-row flex-col justify-center lg:justify-between items-center gap-y-4 mx-auto px-6 md:px-16 py-16 max-w-7xl">
           <div className="flex md:flex-row flex-col items-center gap-x-2">
             <h3 className="font-inter">Built with:</h3>
-            <ul className="flex items-center gap-x-2 text-sm dark:text-zinc-600 text-zinc-400 md:mt-0 mt-3">
+            <ul className="flex items-center gap-x-2 mt-3 md:mt-0 text-sm text-zinc-400 dark:text-zinc-600">
               <li>
                 <a
                   href="https://sanity.io"
                   rel="noreferrer noopener"
                   target="_blank"
-                  className="flex items-center gap-x-2 dark:text-white text-zinc-600 hover:underline"
+                  className="flex items-center gap-x-2 text-zinc-600 dark:text-white hover:underline"
                 >
                   <Image
                     src={sanitylogo}
@@ -33,7 +33,7 @@ export default function Footer() {
                   href="https://nextjs.org"
                   rel="noreferrer noopener"
                   target="_blank"
-                  className="flex items-center gap-x-2 dark:text-white text-zinc-600 hover:underline"
+                  className="flex items-center gap-x-2 text-zinc-600 dark:text-white hover:underline"
                 >
                   <Image
                     src={nextjslogo}
@@ -49,7 +49,7 @@ export default function Footer() {
                   href="https://vercel.com"
                   rel="noreferrer noopener"
                   target="_blank"
-                  className="flex items-center gap-x-2 dark:text-white text-zinc-600 hover:underline"
+                  className="flex items-center gap-x-2 text-zinc-600 dark:text-white hover:underline"
                 >
                   <Image
                     src={vercellogo}
@@ -63,10 +63,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col lg:items-end items-center lg:text-start text-center">
+          <div className="flex flex-col items-center lg:items-end text-center lg:text-start">
             {/* <a
-              className="flex items-center justify-center gap-x-2 dark:bg-primary-bg bg-zinc-100 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 rounded-md py-2 px-4 text-center mb-3    font-bold tracking-tight"
-              href="https://github.com/Evavic44/victoreke.com"
+              className="flex justify-center items-center gap-x-2 dark:hover:border-zinc-700 hover:border-zinc-200 bg-zinc-100 dark:bg-primary-bg mb-3 px-4 py-2 border border-transparent rounded-md font-bold text-center tracking-tight"
+              href="https://github.com/Evavic44/sergeivas.com"
               target="_blank"
               rel="noreferrer noopener"
             >

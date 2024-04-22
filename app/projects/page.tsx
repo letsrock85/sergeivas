@@ -9,13 +9,13 @@ import { sanityFetch } from "@/lib/sanity.client";
 import PageHeading from "../components/shared/PageHeading";
 
 export const metadata: Metadata = {
-  title: "Project | Victor Eke",
-  metadataBase: new URL("https://victoreke.com/projects"),
-  description: "Explore projects built by Victor Eke",
+  title: "Project | Sergei Vas",
+  metadataBase: new URL("https://sergeivas.com/projects"),
+  description: "Explore projects built by Sergei Vas",
   openGraph: {
-    title: "Projects | Victor Eke",
-    url: "https://victoreke.com/projects",
-    description: "Explore projects built by Victor Eke",
+    title: "Projects | Sergei Vas",
+    url: "https://sergeivas.com/projects",
+    description: "Explore projects built by Sergei Vas",
     images:
       "https://res.cloudinary.com/victoreke/image/upload/v1692636087/victoreke/projects.png",
   },
@@ -28,7 +28,7 @@ export default async function Project() {
   });
 
   return (
-    <main className="max-w-7xl mx-auto md:px-16 px-6">
+    <main className="mx-auto px-6 md:px-16 max-w-7xl">
       <PageHeading
         title="Projects"
         description="I've worked on tons of little projects over the years but these are the ones that I'm most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas on how it can be improved."
@@ -36,23 +36,23 @@ export default async function Project() {
 
       <Slide delay={0.1}>
         {projects.length > 0 ? (
-          <section className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12">
+          <section className="gap-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mb-12">
             {projects.map((project) => (
               <Link
                 href={`/projects/${project.slug}`}
                 key={project._id}
-                className="flex items-center gap-x-4 dark:bg-primary-bg bg-zinc-50 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 p-4 rounded-lg"
+                className="flex items-center gap-x-4 dark:hover:border-zinc-700 hover:border-zinc-200 bg-zinc-50 dark:bg-primary-bg p-4 border border-transparent rounded-lg"
               >
                 <Image
                   src={project.logo}
                   width={60}
                   height={60}
                   alt={project.name}
-                  className="dark:bg-zinc-800 bg-zinc-100 rounded-md p-2"
+                  className="bg-zinc-100 dark:bg-zinc-800 p-2 rounded-md"
                 />
                 <div>
-                  <h2 className="text-lg tracking-wide mb-1">{project.name}</h2>
-                  <div className="text-sm dark:text-zinc-400 text-zinc-600">
+                  <h2 className="mb-1 text-lg tracking-wide">{project.name}</h2>
+                  <div className="text-sm text-zinc-600 dark:text-zinc-400">
                     {project.tagline}
                   </div>
                 </div>

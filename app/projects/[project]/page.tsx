@@ -28,13 +28,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${project.name} | Project`,
-    metadataBase: new URL(`https://victoreke.com/projects/${project.slug}`),
+    metadataBase: new URL(`https://sergeivas.com/projects/${project.slug}`),
     description: project.tagline,
     openGraph: {
       images:
         urlFor(project.coverImage?.image).width(1200).height(630).url() ||
         fallbackImage,
-      url: `https://victoreke.com/projects/${project.slug}`,
+      url: `https://sergeivas.com/projects/${project.slug}`,
       title: project.name,
       description: project.tagline,
     },
@@ -50,11 +50,11 @@ export default async function Project({ params }: Props) {
   });
 
   return (
-    <main className="max-w-6xl mx-auto lg:px-16 px-8">
+    <main className="mx-auto px-8 lg:px-16 max-w-6xl">
       <Slide>
-        <div className="max-w-3xl mx-auto">
-          <div className="flex items-start justify-between mb-4">
-            <h1 className="font-incognito font-black tracking-tight sm:text-5xl text-3xl mb-4 max-w-sm">
+        <div className="mx-auto max-w-3xl">
+          <div className="flex justify-between items-start mb-4">
+            <h1 className="mb-4 max-w-sm font-black font-incognito text-3xl sm:text-5xl tracking-tight">
               {project.name}
             </h1>
 
@@ -72,9 +72,9 @@ export default async function Project({ params }: Props) {
             </a>
           </div>
 
-          <div className="relative w-full h-40 pt-[52.5%]">
+          <div className="relative pt-[52.5%] w-full h-40">
             <Image
-              className="rounded-xl border dark:border-zinc-800 border-zinc-100 object-cover"
+              className="border-zinc-100 dark:border-zinc-800 border rounded-xl object-cover"
               layout="fill"
               src={project.coverImage?.image || fallbackImage}
               alt={project.coverImage?.alt || project.name}
@@ -84,7 +84,7 @@ export default async function Project({ params }: Props) {
             />
           </div>
 
-          <div className="mt-8 dark:text-zinc-400 text-zinc-600 leading-relaxed">
+          <div className="mt-8 text-zinc-600 dark:text-zinc-400 leading-relaxed">
             <PortableText
               value={project.description}
               components={CustomPortableText}

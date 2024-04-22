@@ -43,23 +43,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${post.title}`,
-    metadataBase: new URL(`https://victoreke.com/blog/${post.slug}`),
+    metadataBase: new URL(`https://sergeivas.com/blog/${post.slug}`),
     description: post.description,
     publisher: post.author.name,
     keywords: post.tags,
     alternates: {
       canonical:
-        post.canonicalLink || `https://victoreke.com/blog/${post.slug}`,
+        post.canonicalLink || `https://sergeivas.com/blog/${post.slug}`,
     },
     openGraph: {
       images:
         urlFor(post.coverImage?.image).width(1200).height(630).url() ||
         fallbackImage,
-      url: `https://victoreke.com/blog/${post.slug}`,
+      url: `https://sergeivas.com/blog/${post.slug}`,
       title: post.title,
       description: post.description,
       type: "article",
-      siteName: "victoreke.com",
+      siteName: "sergeivas.com",
       authors: post.author.name,
       tags: post.tags,
       publishedTime: post._createdAt,
@@ -93,24 +93,24 @@ export default async function Post({ params }: Props) {
   }
 
   return (
-    <main className="max-w-7xl mx-auto md:px-16 px-6">
+    <main className="mx-auto px-6 md:px-16 max-w-7xl">
       <header>
-        <Slide className="relative flex items-center gap-x-2 border-b dark:border-zinc-800 border-zinc-200 pb-8">
+        <Slide className="relative flex items-center gap-x-2 border-zinc-200 dark:border-zinc-800 pb-8 border-b">
           <Link
             href="/blog"
-            className="whitespace-nowrap dark:text-zinc-400 text-zinc-400 hover:dark:text-white hover:text-zinc-700 text-sm border-b dark:border-zinc-700 border-zinc-200"
+            className="border-zinc-200 dark:border-zinc-700 border-b text-sm text-zinc-400 hover:dark:text-white hover:text-zinc-700 dark:text-zinc-400 whitespace-nowrap"
           >
             cd ..
           </Link>
           <BiChevronRight />
-          <p className="text-zinc-400 text-sm truncate">{post.title}</p>
+          <p className="text-sm text-zinc-400 truncate">{post.title}</p>
         </Slide>
       </header>
 
       <article>
-        <Slide className="flex lg:flex-row flex-col relative" delay={0.1}>
-          <div className="min-h-full lg:border-r border-r-0 dark:border-zinc-800 border-zinc-200 basis-3/4 pt-10 pb-4 lg:pr-6 px-0">
-            <div className="flex items-center flex-wrap gap-4 text-md mb-8 dark:text-zinc-400 text-zinc-600">
+        <Slide className="relative flex lg:flex-row flex-col" delay={0.1}>
+          <div className="border-zinc-200 dark:border-zinc-800 px-0 pt-10 lg:pr-6 pb-4 border-r-0 lg:border-r min-h-full basis-3/4">
+            <div className="flex flex-wrap items-center gap-4 mb-8 text-md text-zinc-600 dark:text-zinc-400">
               <div className="flex items-center gap-x-2">
                 <HiCalendar />
                 <time dateTime={post.date ? post.date : post._createdAt}>
@@ -121,7 +121,7 @@ export default async function Post({ params }: Props) {
               </div>
               <Link
                 href="#comments"
-                className="flex items-center gap-x-2 dark:text-primary-color text-tertiary-color"
+                className="flex items-center gap-x-2 text-tertiary-color dark:text-primary-color"
               >
                 <HiChat />
                 <div className="#comments">Comments</div>
@@ -134,9 +134,9 @@ export default async function Post({ params }: Props) {
 
             <PageHeading title={post.title} description={post.description} />
 
-            <div className="relative w-full h-40 pt-[52.5%]">
+            <div className="relative pt-[52.5%] w-full h-40">
               <Image
-                className="rounded-xl border dark:border-zinc-800 border-zinc-100 object-cover"
+                className="border-zinc-100 dark:border-zinc-800 border rounded-xl object-cover"
                 layout="fill"
                 src={post.coverImage?.image || fallbackImage}
                 alt={post.coverImage?.alt || post.title}
@@ -146,14 +146,14 @@ export default async function Post({ params }: Props) {
               />
             </div>
 
-            <div className="mt-8 dark:text-zinc-400 text-zinc-600 leading-relaxed tracking-tight text-lg">
+            <div className="mt-8 text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed tracking-tight">
               <PortableText value={post.body} components={CustomPortableText} />
             </div>
           </div>
 
-          <aside className="flex flex-col lg:max-h-full h-max gap-y-8 sticky top-2 bottom-auto right-0 basis-1/4 py-10 lg:px-6 px-0">
-            <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
-              <p className="dark:text-zinc-400 text-zinc-500 text-sm">
+          <aside className="top-2 right-0 bottom-auto sticky flex flex-col gap-y-8 px-0 lg:px-6 py-10 h-max lg:max-h-full basis-1/4">
+            <section className="border-zinc-200 dark:border-zinc-800 pb-10 border-b">
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 Written By
               </p>
               <address className="flex items-center gap-x-3 mt-4 not-italic">
@@ -165,7 +165,7 @@ export default async function Post({ params }: Props) {
                       .url()}
                     alt={post.author.photo.alt}
                     layout="fill"
-                    className="dark:bg-zinc-800 bg-zinc-300 rounded-full object-cover"
+                    className="bg-zinc-300 dark:bg-zinc-800 rounded-full object-cover"
                   />
                 </div>
                 <div rel="author">
@@ -184,15 +184,15 @@ export default async function Post({ params }: Props) {
               </address>
             </section>
 
-            <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
-              <h3 className="text-xl font-semibold tracking-tight mb-4">
+            <section className="border-zinc-200 dark:border-zinc-800 pb-10 border-b">
+              <h3 className="mb-4 font-semibold text-xl tracking-tight">
                 Tags
               </h3>
               <ul className="flex flex-wrap items-center gap-2 tracking-tight">
                 {post.tags.map((tag, id) => (
                   <li
                     key={id}
-                    className="dark:bg-primary-bg bg-zinc-100 border dark:border-zinc-800 border-zinc-200 rounded-md px-2 py-1 text-sm"
+                    className="border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-primary-bg px-2 py-1 border rounded-md text-sm"
                   >
                     {tag}
                   </li>
@@ -206,8 +206,8 @@ export default async function Post({ params }: Props) {
               description={post.description}
             />
 
-            <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
-              <h3 className="text-xl font-semibold tracking-tight mb-4">
+            <section className="border-zinc-200 dark:border-zinc-800 pb-10 border-b">
+              <h3 className="mb-4 font-semibold text-xl tracking-tight">
                 Featured
               </h3>
               <FeaturedPosts params={params.post} />
@@ -218,16 +218,16 @@ export default async function Post({ params }: Props) {
 
       <section
         id="comments"
-        className="max-w-3xl mt-10 lg:border-t dark:border-zinc-800 border-zinc-200 lg:py-10 pt-0"
+        className="border-zinc-200 dark:border-zinc-800 mt-10 lg:py-10 pt-0 lg:border-t max-w-3xl"
       >
-        <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8">
+        <h3 className="mb-8 font-semibold text-3xl lg:text-4xl tracking-tight">
           Comments
         </h3>
         <Comments />
       </section>
 
-      <section className="max-w-3xl lg:py-10 pt-0">
-        <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8">
+      <section className="lg:py-10 pt-0 max-w-3xl">
+        <h3 className="mb-8 font-semibold text-3xl lg:text-4xl tracking-tight">
           Support
         </h3>
         <Buymeacoffee />

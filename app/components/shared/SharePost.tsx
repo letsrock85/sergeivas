@@ -14,7 +14,7 @@ type props = {
 };
 
 export default function SharePost({ title, slug, description }: props) {
-  const blog = encodeURIComponent("https://victoreke.com/blog/");
+  const blog = encodeURIComponent("https://sergeivas.com/blog/");
   const options = [
     {
       icon: BiLogoTwitter,
@@ -37,7 +37,7 @@ export default function SharePost({ title, slug, description }: props) {
       icon: BiLogoWhatsapp,
       name: "WhatsApp",
       shareUrl: `https://api.whatsapp.com/send?text=${encodeURIComponent(
-        "Read this amazing article by Victor Eke"
+        "Read this amazing article by Sergei Vas"
       )}.%0A%0A${title}%0A%0A${blog}${slug}`,
     },
   ];
@@ -51,8 +51,8 @@ export default function SharePost({ title, slug, description }: props) {
   };
 
   return (
-    <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
-      <h3 className="text-xl font-semibold tracking-tight mb-4">Share Post</h3>
+    <section className="border-zinc-200 dark:border-zinc-800 pb-10 border-b">
+      <h3 className="mb-4 font-semibold text-xl tracking-tight">Share Post</h3>
 
       <div className="flex flex-wrap items-center gap-2 tracking-tight">
         {options.map((data, id) => (
@@ -61,7 +61,7 @@ export default function SharePost({ title, slug, description }: props) {
             onClick={() => openPopup(data.shareUrl)}
             title={`Share to ${data.name}`}
             aria-label={`Share to ${data.name}`}
-            className="w-12 h-12 p-2 grid place-content-center text-2xl dark:bg-primary-bg bg-zinc-100 border dark:border-zinc-800 border-zinc-200 rounded-md"
+            className="place-content-center border-zinc-200 dark:border-zinc-800 grid bg-zinc-100 dark:bg-primary-bg p-2 border rounded-md w-12 h-12 text-2xl"
           >
             <data.icon aria-hidden="true" />
           </button>
