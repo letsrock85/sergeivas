@@ -54,7 +54,7 @@ export const socialLinks = [
   {
     id: 6,
     name: "Instagram",
-    url: "https://instagram.com/sergeivas",
+    url: "https://instagram.com/sergei.therock",
     icon: BiLogoInstagram,
     status: "social",
   },
@@ -117,7 +117,7 @@ export const socialLinks = [
   {
     id: 15,
     name: "Stackoverflow",
-    url: "https://stackoverflow.com/users/14021166/sergeivas",
+    url: "https://stackoverflow.com/",
     icon: BiLogoStackOverflow,
     status: "social",
   },

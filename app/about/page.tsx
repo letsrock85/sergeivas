@@ -80,7 +80,7 @@ export default async function About() {
                     <div className="flex flex-col gap-y-4 text-center">
                       <div className="flex items-center gap-x-3">
                         <a
-                          href="https://www.craft.me/s/WQpQF3jrPIodXp"
+                          href="https://www.linkedin.com/in/sergeydigital/"
                           rel="noreferrer noopener"
                           target="_blank"
                           className="flex justify-center items-center gap-x-2 dark:hover:border-zinc-700 hover:border-zinc-200 bg-zinc-100 dark:bg-primary-bg py-2 border border-transparent rounded-md font-incognito font-semibold text-center text-lg basis-[90%]"
