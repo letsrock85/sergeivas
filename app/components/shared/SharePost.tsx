@@ -20,7 +20,7 @@ export default function SharePost({ title, slug, description }: props) {
       icon: BiLogoTwitter,
       name: "Twitter",
       shareUrl: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        "Thank you @victoreke for writing this post."
+        "Thank you @sergeivas for writing this post."
       )}.%0A%0A${title}%0A%0A${blog}${slug}`,
     },
     {

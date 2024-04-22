@@ -10,7 +10,7 @@ import { sanityFetch } from "@/lib/sanity.client";
 import { readTime } from "@/app/utils/readTime";
 import { toPlainText } from "@portabletext/react";
 
-const fallbackImage = "https://res.cloudinary.com/victoreke/image/upload/v1692608339/victoreke/blog.png";
+const fallbackImage = "https://res.cloudinary.com/sergeivas/image/upload/v1692608339/sergeivas/blog.png";
 
 // Определяем интерфейс для пропсов
 interface PostsProps {
@@ -32,18 +32,18 @@ const Posts = async ({ max }:PostsProps) => {
   return (
     <section>
       {postsToShow.length > 0 ? (
-        <div className="flex flex-col lg:max-w-[950px] max-w-full lg:gap-y-8 gap-y-12 mb-12">
+        <div className="flex flex-col gap-y-12 lg:gap-y-8 mb-12 max-w-full lg:max-w-[950px]">
           {postsToShow.map((post) =>
             post.isPublished !== true ? null : (
               <article key={post._id}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="flex lg:flex-row flex-col lg:items-center items-start gap-8 dark:bg-primary-bg bg-secondary-bg p-6 rounded-lg border dark:border-zinc-800 border-zinc-200 group"
+                  className="flex lg:flex-row flex-col items-start lg:items-center gap-8 border-zinc-200 dark:border-zinc-800 bg-secondary-bg dark:bg-primary-bg p-6 border rounded-lg group"
                 >
-                    <div className="relative lg:w-[450px] lg:h-52 w-full h-56 overflow-clip">
+                    <div className="relative w-full lg:w-[450px] h-56 lg:h-52 overflow-clip">
                       <Image
                         src={post.coverImage?.image || fallbackImage}
-                        className="dark:bg-zinc-800 bg-zinc-100 rounded-md object-cover group-hover:scale-125 duration-300"
+                        className="group-hover:scale-125 bg-zinc-100 dark:bg-zinc-800 rounded-md duration-300 object-cover"
                         alt={post.coverImage?.alt || post.title}
                         layout="fill"
                         placeholder={post.coverImage ? "blur" : "empty"}
@@ -51,8 +51,8 @@ const Posts = async ({ max }:PostsProps) => {
                       />
                     </div>
                     <div className="max-w-lg">
-                      <h2 className="text-2xl font-semibold tracking-tight mb-4">{post.title}</h2>
-                      <p className="dark:text-zinc-400 text-zinc-600 text-[0.95rem]">{post.description}</p>
+                      <h2 className="mb-4 font-semibold text-2xl tracking-tight">{post.title}</h2>
+                      <p className="text-[0.95rem] text-zinc-600 dark:text-zinc-400">{post.description}</p>
                       <div className="flex items-center gap-x-4 mt-3 text-sm">
                         <HiCalendar />
                         <time dateTime={post.date || post._createdAt}>{formatDate(post.date || post._createdAt)}</time>

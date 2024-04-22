@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description:
       "Learn more about my skills, experience and technical background",
     images:
-      "https://res.cloudinary.com/victoreke/image/upload/v1692635746/victoreke/og.png",
+      "https://res.cloudinary.com/sergeivas/image/upload/v1692635746/sergeivas/og.png",
   },
 };
 
@@ -38,20 +38,20 @@ export default async function About() {
 
   return (
     <>
-    {/* <main className="relative lg:max-w-7xl mx-auto max-w-3xl md:px-16 px-6"> */}
-    <main className="relative lg:max-w-7xl mx-auto max-w-3xl md:px-16 px-6">
+    {/* <main className="relative mx-auto px-6 md:px-16 max-w-3xl lg:max-w-7xl"> */}
+    <main className="relative mx-auto px-6 md:px-16 max-w-3xl lg:max-w-7xl">
       {profile &&
         profile.map((data) => (
           <div key={data._id}>
-            <section className="relative grid lg:grid-cols-custom grid-cols-1 gap-x-6 justify-items-center">
+            <section className="relative justify-items-center gap-x-6 grid grid-cols-1 lg:grid-cols-custom">
               <div className="order-2 lg:order-none">
                 <Slide>
-                  <h1 className="font-incognito font-semibold tracking-tight sm:text-5xl text-3xl lg:leading-tight basis-1/2 mb-8">
+                  <h1 className="mb-8 font-incognito font-semibold text-3xl sm:text-5xl lg:leading-tight tracking-tight basis-1/2">
                     I&apos;m {data.fullName}. I live in {data.location}, where I
                     build the future.
                   </h1>
 
-                  <div className="dark:text-zinc-400 text-zinc-600 leading-relaxed">
+                  <div className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     <PortableText
                       value={data.fullBio}
                       components={CustomPortableText}
@@ -62,11 +62,11 @@ export default async function About() {
 
               
 
-              <aside className="flex flex-col lg:justify-self-center justify-self-auto gap-y-8 lg:order-1 order-none mb-12">
+              <aside className="flex flex-col justify-self-auto lg:justify-self-center gap-y-8 order-none lg:order-1 mb-12">
                 <Slide delay={0.1}>
-                  <div className="sticky top-10">
+                  <div className="top-10 sticky">
                     <Image
-                      className="rounded-2xl mb-4 object-cover max-h-96 min-h-96 bg-top"
+                      className="bg-top mb-4 rounded-2xl min-h-96 max-h-96 object-cover"
                       src={data.profileImage.image}
                       width={400}
                       height={400}
@@ -77,19 +77,19 @@ export default async function About() {
                       priority
                     />
 
-                    <div className="flex flex-col text-center gap-y-4">
+                    <div className="flex flex-col gap-y-4 text-center">
                       <div className="flex items-center gap-x-3">
                         <a
                           href="https://www.craft.me/s/WQpQF3jrPIodXp"
                           rel="noreferrer noopener"
                           target="_blank"
-                          className="flex items-center justify-center text-center gap-x-2 basis-[90%] dark:bg-primary-bg bg-zinc-100 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 rounded-md py-2 text-lg font-incognito font-semibold"
+                          className="flex justify-center items-center gap-x-2 dark:hover:border-zinc-700 hover:border-zinc-200 bg-zinc-100 dark:bg-primary-bg py-2 border border-transparent rounded-md font-incognito font-semibold text-center text-lg basis-[90%]"
                         >
                           View Résumé <BiLinkExternal className="text-base" />
                         </a>
                         <a
                           href={`${data.resumeURL}?dl=${data.fullName}-resume`}
-                          className="flex items-center justify-center text-center dark:text-primary-color text-secondary-color hover:underline basis-[10%] dark:bg-primary-bg bg-zinc-100 border border-transparent dark:hover:border-zinc-700 hover:border-zinc-200 rounded-md py-3 text-lg"
+                          className="flex justify-center items-center dark:hover:border-zinc-700 hover:border-zinc-200 bg-zinc-100 dark:bg-primary-bg py-3 border border-transparent rounded-md text-center text-lg text-secondary-color dark:text-primary-color hover:underline basis-[10%]"
                           title="Download Resume"
                         >
                           <BiSolidDownload

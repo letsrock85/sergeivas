@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: "https://sergeivas.com/blog",
     description: "Read latest stories from Sergei Vas's Blog",
     images:
-      "https://res.cloudinary.com/victoreke/image/upload/v1692636087/victoreke/blog.png",
+      "https://res.cloudinary.com/sergeivas/image/upload/v1692636087/sergeivas/blog.png",
   },
 };
 
@@ -22,7 +22,7 @@ export default async function Blog() {
   return (
     <main className="mx-auto px-6 md:px-16 max-w-7xl">
       <PageHeading
-        title="ASS 3"
+        title="Projects"
         description="Welcome to my blog domain where I share personal stories about things I've learned, projects I'm hacking on and just general findings. I also write for other publications."
       >
         <Social type="publication" />

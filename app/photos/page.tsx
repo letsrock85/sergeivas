@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://sergeivas.com/photos",
     description: "Explore photos taken by Sergei Vas",
     images:
-      "https://res.cloudinary.com/victoreke/image/upload/v1692635149/victoreke/photos.png",
+      "https://res.cloudinary.com/sergeivas/image/upload/v1692635149/sergeivas/photos.png",
   },
 };
 
