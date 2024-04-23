@@ -22,7 +22,7 @@ export default async function Blog() {
   return (
     <main className="mx-auto px-6 md:px-16 max-w-7xl">
       <PageHeading
-        title="Projects"
+        title="Blog Posts"
         description="Welcome to my blog domain where I share personal stories about things I've learned, projects I'm hacking on and just general findings. I also write for other publications."
       >
         <Social type="publication" />

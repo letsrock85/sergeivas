@@ -33,7 +33,7 @@ export const socialLinks = [
   {
     id: 3,
     name: "Linkedin",
-    url: "https://linkedin.com/in/sergeivasawa",
+    url: "https://www.linkedin.com/in/sergeydigital/",
     icon: BiLogoLinkedinSquare,
     status: "social",
   },

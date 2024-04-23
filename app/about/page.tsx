@@ -111,7 +111,12 @@ export default async function About() {
                 </Slide>
               </aside>
             </section>
-            <Posts max={1} fax={2} />
+            <Slide delay={0.14}>
+              <Usage />
+              <Heroes />
+            </Slide>
+              
+            {/* <Posts max={1} fax={2} /> */}
             {/* <Slide delay={0.14}>
               <Usage />
             </Slide>
@@ -119,9 +124,10 @@ export default async function About() {
           </div>
         ))}
     </main>
-    <Slide delay={0.34}>
+    {/* <Slide delay={0.34}>
       <StaticTextSection />
-    </Slide>    
+    </Slide> */}
+      
     </>
   );
 }

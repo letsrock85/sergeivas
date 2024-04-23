@@ -47,7 +47,7 @@ export default function MobileMenu() {
       <button
         aria-label="Toggle Menu"
         onClick={toggleNav}
-        className="md:hidden dark:bg-primary-bg bg-secondary-bg border dark:border-zinc-800 border-zinc-200 rounded-md p-2"
+        className="border-zinc-200 dark:border-zinc-800 md:hidden bg-secondary-bg dark:bg-primary-bg p-2 border rounded-md"
       >
         <RxHamburgerMenu className="text-xl" />
       </button>
@@ -56,9 +56,9 @@ export default function MobileMenu() {
           navShow ? 'translate-x-0 rounded-none' : 'translate-x-full'
         } ${isHidden ? 'hidden' : ''}`}
       >
-        <div className="flex items-center justify-between mt-6 px-8">
+        <div className="flex justify-between items-center mt-6 px-8">
           <Link href="/" onClick={toggleNav}>
-            <Image src={Logo} width={158} height={35} alt="logo" />
+            <Image src={Logo} width={300} height={35} alt="logo" />
           </Link>
 
           <button
@@ -77,11 +77,11 @@ export default function MobileMenu() {
             <Link
               key={link.title}
               href={link.href}
-              className="flex items-center gap-x-2 font-incognito font-semibold text-lg dark:shadow-line-dark shadow-line-light p-6 group"
+              className="flex items-center gap-x-2 shadow-line-light dark:shadow-line-dark p-6 font-incognito font-semibold text-lg group"
               onClick={toggleNav}
             >
               <link.icon
-                className="text-zinc-500 group-hover:dark:text-white group-hover:text-zinc-800 duration-300"
+                className="group-hover:dark:text-white group-hover:text-zinc-800 text-zinc-500 duration-300"
                 aria-hidden="true"
               />
               {link.title}

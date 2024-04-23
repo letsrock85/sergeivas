@@ -16,6 +16,7 @@ module.exports = {
         "primary-color": "#33E092",
         "secondary-color": "#0CCE6B",
         "tertiary-color": "#16a34a",
+        "headline-color": "#6b7af7",
         "primary-bg": "rgba(39, 39, 43, 0.4)",
         "secondary-bg": "rgba(250, 250, 250, 0.4)",
       },
