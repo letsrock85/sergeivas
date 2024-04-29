@@ -44,11 +44,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout({ children, }: {
   children: React.ReactNode;
 }) {
+  console.log(process.env.NODE_ENV);
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -65,7 +65,11 @@ export default function RootLayout({
         src="https://umami-for-traffic-analytics.vercel.app/script.js"
         data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || ""}
       /> */}
-      <Script async defer src="https://stats.sergeivas.com/tracker.js" data-website-id="cluvqnimm0001mt4b4uhegi86"></Script>
+      {
+        process.env.NODE_ENV === 'production' && (
+          <Script async defer src="https://stats.sergeivas.com/tracker.js" data-website-id="cluvqnimm0001mt4b4uhegi86"></Script>
+        )
+      }
     </html>
   );
 }
