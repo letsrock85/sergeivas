@@ -34,37 +34,24 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
   const [navbarHeight, setNavbarHeight] = useState(0);
 
-  const handleScroll = () => {
+  const handleScrollEffect = () => {
     const currentScrollY = window.scrollY;
-    // Определите, находится ли пользователь в самом верху страницы
     setIsTop(currentScrollY === 0);
 
     if (currentScrollY > lastScrollY.current && currentScrollY > navbarHeight) {
-        isVisible && setIsVisible(false);
+      isVisible && setIsVisible(false);
     } else if (lastScrollY.current - currentScrollY > SCROLL_UP_THRESHOLD) {
-        !isVisible && setIsVisible(true);
+      !isVisible && setIsVisible(true);
     }
     lastScrollY.current = currentScrollY;
-};
+  };
 
   useEffect(() => {
-    const handleScrollEffect = () => {
-      const currentScrollY = window.scrollY;
-      setIsTop(currentScrollY === 0);
-
-      if (currentScrollY > lastScrollY.current && currentScrollY > navbarHeight) {
-        isVisible && setIsVisible(false);
-      } else if (lastScrollY.current - currentScrollY > SCROLL_UP_THRESHOLD) {
-        !isVisible && setIsVisible(true);
-      }
-      lastScrollY.current = currentScrollY;
-    };
-
     setNavbarHeight(navbarRef.current?.offsetHeight || 0);
     window.addEventListener('scroll', handleScrollEffect);
 
     return () => window.removeEventListener('scroll', handleScrollEffect);
-  }, [isVisible, navbarHeight]);
+  }, [isVisible, navbarHeight, SCROLL_UP_THRESHOLD]);
 
   return (
     <UnmountStudio>
