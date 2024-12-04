@@ -18,6 +18,7 @@
 # misc
 .DS_Store
 *.pem
+Thumbs.db
 
 # debug
 npm-debug.log*
@@ -25,7 +26,11 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env*.local
+.env.development
+.env.test
+.env.production
 
 # vercel
 .vercel
@@ -34,9 +39,23 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.env
-backup.json
-backup.ndjson
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
 
-#VSCODE
-.vscode/
+# Sanity
+/studio/node_modules
+/studio/.sanity
+/studio/dist
+
+# Zone Identifier files
+*:Zone.Identifier
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes

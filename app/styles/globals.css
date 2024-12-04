@@ -9,7 +9,7 @@ html {
 @import "prism.css";
 
 body {
-  background-image: url("../../public/noise.png");
+  background-image: url("../../public/pattern4.png");
   background-size: 200px 200px;
   background-position: 0 0;
 }
@@ -20,7 +20,16 @@ h3,
 h4 {
   font-family: var(--incognito), "Inter", sans-serif;
 }
-
+.always-black-section {
+  background-color: #0b0b0b; /* Черный фон */
+  color: #fff; /* Белый текст */
+}
+.bg-grey {
+  background-color: #ebebeb;
+}
+.always-dark {
+  background-color: #272727; /* bg-gray-900 */
+}
 .path {
   stroke-dasharray: 500px 100px;
   animation: animate 100s linear infinite alternate-reverse;

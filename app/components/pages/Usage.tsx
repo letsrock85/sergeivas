@@ -12,9 +12,9 @@ export default async function Usage() {
 
   return (
     <section className="max-w-2xl">
-      <div className="mb-8">
-        <h2 className="text-4xl mb-4 font-bold tracking-tight">Usage</h2>
-        <p className="dark:text-zinc-400 text-zinc-600 max-w-xl">
+      <div className="mt-12 mb-8">
+        <h2 className="mb-4 font-bold text-4xl tracking-tight">Usage</h2>
+        <p className="max-w-xl text-zinc-600 dark:text-zinc-400">
           Tools, technologies and gadgets I use on a daily basis but not limited
           to.
         </p>
