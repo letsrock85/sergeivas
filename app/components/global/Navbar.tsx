@@ -48,12 +48,23 @@ export default function Navbar() {
 };
 
   useEffect(() => {
-    setNavbarHeight(navbarRef.current?.offsetHeight || 0);
-    window.addEventListener('scroll', handleScroll);
+    const handleScrollEffect = () => {
+      const currentScrollY = window.scrollY;
+      setIsTop(currentScrollY === 0);
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isVisible, navbarHeight, isTop]); // Only re-run effect if isVisible 
-    
+      if (currentScrollY > lastScrollY.current && currentScrollY > navbarHeight) {
+        isVisible && setIsVisible(false);
+      } else if (lastScrollY.current - currentScrollY > SCROLL_UP_THRESHOLD) {
+        !isVisible && setIsVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    setNavbarHeight(navbarRef.current?.offsetHeight || 0);
+    window.addEventListener('scroll', handleScrollEffect);
+
+    return () => window.removeEventListener('scroll', handleScrollEffect);
+  }, [isVisible, navbarHeight]);
 
   return (
     <UnmountStudio>

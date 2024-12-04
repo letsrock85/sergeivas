@@ -53,9 +53,9 @@ export default function PrivacyPolicy() {
                 We only interact with the Deezer API to provide music preview functionality. When using our extension:
               </p>
               <ul className="list-disc pl-6 mb-4 space-y-2">
-                <li>Your highlighted text is sent to Deezer's search API.</li>
+                <li>Your highlighted text is sent to Deezer&apos;s search API.</li>
                 <li>Audio previews are streamed directly from Deezer.</li>
-                <li>Please refer to <a href="https://www.deezer.com/legal/privacy" className="text-blue-600 hover:underline">Deezer's Privacy Policy</a> for information about their data practices.</li>
+                <li>Please refer to <a href="https://www.deezer.com/legal/privacy" className="text-blue-600 hover:underline">Deezer&apos;s Privacy Policy</a> for information about their data practices.</li>
               </ul>
             </section>
 
