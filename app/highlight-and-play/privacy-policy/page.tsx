@@ -1,3 +1,4 @@
+import React from 'react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export default function PrivacyPolicy() {
             <section>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">Last Updated: December 4, 2023</h2>
               <p className="mb-4">
-                This Privacy Policy describes how Highlight&Play ("we", "our", or "us") handles information when you use our Chrome Extension.
+                This Privacy Policy describes how Highlight&Play (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) handles information when you use our Chrome Extension.
               </p>
             </section>
 
