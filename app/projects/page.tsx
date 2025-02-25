@@ -31,7 +31,7 @@ export default async function Project() {
     <main className="mx-auto px-6 md:px-16 max-w-7xl">
       <PageHeading
         title="Projects"
-        description="I've worked on tons of little projects over the years but these are the ones that I'm most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas on how it can be improved."
+        description="I've worked on a wide range of projects, from big enterprise solutions for well-known brands to innovative ideas born out of intense hackathons. While some of my most impressive work remain under NDA due to its cutting-edge nature, I'm excited to share the projects that I'm genuinely passionate about."
       />
 
       <Slide delay={0.1}>
