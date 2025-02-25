@@ -1,0 +1,366 @@
+# Developer Portfolio – Product Requirements Document
+
+## 1. Project Overview
+
+This Developer Portfolio is designed to showcase your skills, projects, and professional background. The site will highlight key projects, display your resume, include a blog (if desired), and provide a contact form. The goal is to create a responsive, modern, and accessible website that demonstrates clean code, thoughtful UI design, and best practices in modern web development.
+
+### Tech Stack:
+- Frontend: Next.js 14 (App Router), Tailwind CSS, shadcn UI, Lucide Icons
+- Backend (if needed): Next.js Server Actions, Node.js, TypeScript
+- Deployment: Vercel
+- phosphoricons (https://phosphoricons.com/) for icons
+
+*Example of using phosphoricons:*
+```tsx
+npm i @phosphor-icons/react@next
+import { Globe } from "@phosphor-icons/react/dist/ssr";
+```
+
+**CMS & Backend:**
+- Sanity v3 (Headless CMS)
+- Sanity Studio for content management
+- Next-Sanity for integration
+- GROQ for queries
+
+**Images & Media:**
+- Next/Image
+- Sharp for image optimization
+- Cloudinary for hosting media files
+
+**Additional Features:**
+- Next-themes for light/dark theme switching
+- Giscus for comments
+- Portable Text for rich text formatting
+
+## 2. Core Functionalities
+
+### Homepage (Landing Page)
+- Hero Section: 
+  - Main heading "Software Development & Business Intelligence Services"
+  - Subheading "For Enhanced Business Processes"
+  - Professional description text
+- Social Links: Collection of icon links to social networks and professional platforms (GitHub, X, LinkedIn, Codepen, Dribbble, Instagram, Steam, Unsplash, Youtube, Daily.dev, Producthunt, Stackoverflow, Codewars, Gitlab)
+- Work Experience: Section with job history cards
+- Visual Element: Isometric illustration on the right side of hero section
+
+### About Page
+- Personal Info:
+  - Heading
+  - Professional description
+  - Profile photo
+  - Resume download button
+  - Contact email
+- Personal Skills:
+  - Attention to detail
+  - Ability to work with little supervision
+- Usage Section:
+  - Technologies list with descriptions (React, React Native, Next.js, etc.)
+  - Tools list (VS Code, Google Dev Tools, Figma, etc.)
+- Heroes Section:
+  - List of admired professionals in the field
+
+### Projects Showcase
+- Listing: Display projects in a card layout with thumbnails, titles, and short descriptions
+- Detail Page: Each project card links to a detailed page with images, project descriptions, technologies used, and links to live demos or source code
+
+### Blog Section (Optional)
+- Posts Listing: Show a list of blog posts with titles, summaries, and publication dates
+- Detail View: Individual blog pages for reading full articles
+- Category & Tag Filtering: (If applicable) Enable filtering posts by category or tags
+
+### Contact Form
+- Form Fields: Name, Email, Message
+- Submission: Data sent to a server-side API endpoint for processing (e.g., sending an email or storing in a database)
+- Validation & Error Handling: Both on the client side and server side to ensure robust communication
+
+### Dark Mode Toggle
+- UI Option: Allow visitors to switch between light and dark themes
+
+## 3. Documentation
+
+### General Guidelines
+
+#### Environment Variables:
+- Store sensitive data (if any) in .env.local
+- Update .env.example accordingly
+- Use NEXT_PUBLIC_ for any client-exposed variables
+
+#### Type Safety:
+- Use TypeScript interfaces throughout the project
+- Avoid any by defining clear types for components, API responses, and data structures
+
+#### Sample Type Definition
+```typescript
+// types/actions-types.ts
+export type ActionState<T> = {
+  isSuccess: boolean;
+  message: string;
+  data?: T;
+};
+```
+
+Export in:
+```typescript
+// types/index.ts
+export * from "./actions-types";
+```
+
+## 4. Current File Structure
+
+Below is a suggested file structure to keep the project organized:
+
+```
+sergeivas.com/
+├── app/
+│   ├── about/
+│   │   └── page.tsx
+│   ├── blog/
+│   │   └── [slug]/
+│   │       └── page.tsx
+│   ├── components/
+│   │   ├── global/
+│   │   │   ├── Navbar.tsx
+│   │   │   └── Footer.tsx
+│   │   ├── pages/
+│   │   │   ├── Industries.tsx
+│   │   │   ├── Job.tsx
+│   │   │   ├── Posts.tsx
+│   │   │   ├── StaticTextSection.tsx
+│   │   │   └── Usage.tsx
+│   │   └── shared/
+│   │       ├── CustomPortableText.tsx
+│   │       ├── EmptyState.tsx
+│   │       ├── PageHeading.tsx
+│   │       ├── SanityImage.tsx
+│   │       └── Social.tsx
+│   ├── animation/
+│   │   └── Slide.tsx
+│   ├── font/
+│   │   └── font.ts
+│   ├── icons/
+│   │   └── HeroSvg.tsx
+│   ├── projects/
+│   │   ├── [project]/
+│   │   │   └── page.tsx
+│   │   └── page.tsx
+│   ├── studio/
+│   │   └── [[...index]]/
+│   │       └── page.tsx
+│   ├── styles/
+│   │   └── globals.css
+│   ├── team/
+│   │   └── page.tsx
+│   ├── utils/
+│   │   ├── date.ts
+│   │   └── readTime.ts
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── providers.tsx
+├── lib/
+│   ├── sanity.client.ts
+│   ├── sanity.image.ts
+│   └── sanity.query.ts
+├── public/
+│   └── logo.png
+├── schemas/
+│   ├── author.ts
+│   ├── industry.ts
+│   ├── job.ts
+│   ├── post.ts
+│   ├── profile.ts
+│   ├── project.ts
+│   └── team.ts
+├── types/
+│   └── index.ts
+├── .env.example
+├── .env.local
+├── next.config.js
+├── package.json
+├── README.md
+├── sanity.config.ts
+└── tailwind.config.js
+```
+
+## 5. Development Guidelines
+
+### A. General Rules
+
+#### Import Aliases & Naming:
+- Use the @/ alias for internal module imports
+- Use kebab-case for file and folder names (e.g., project-card.tsx)
+
+#### Environment Variables:
+- Always update .env.example when adding new environment variables
+- Never expose sensitive data to the client (except with the NEXT_PUBLIC_ prefix when absolutely necessary)
+
+#### Type Safety & Code Quality:
+- Enforce strict typing with TypeScript
+- Prefer interfaces over type aliases where applicable
+- Use a consistent coding style and follow best practices
+
+### B. Frontend Guidelines
+
+#### Next.js & Component Architecture:
+- Use the Next.js 14 App Router for pages
+- All new pages should reside in the /app folder
+- Shared UI components should be in /components/ui
+- One-off components for specific pages go into /app/[pageName]/_components
+
+#### Server vs. Client Components:
+- Data fetching should be performed in server components
+- Use client components ("use client") only for interactive elements (e.g., dark mode toggle, contact form interactivity)
+
+#### Example of a Server Component (Homepage)
+```tsx
+// app/page.tsx
+"use server";
+
+import HeroSection from "@/components/ui/hero-section";
+
+export default function HomePage() {
+  return (
+    <div className="container mx-auto">
+      <HeroSection />
+      {/* Additional sections like About, Projects preview, etc. */}
+    </div>
+  );
+}
+```
+
+#### Example of a Client Component (Dark Mode Toggle)
+```tsx
+// components/ui/dark-mode-toggle.tsx
+"use client";
+
+import { useState, useEffect } from "react";
+
+export default function DarkModeToggle() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
+  return (
+    <button onClick={() => setDarkMode(!darkMode)}>
+      {darkMode ? "Light Mode" : "Dark Mode"}
+    </button>
+  );
+}
+```
+
+### C. Backend & API Guidelines
+
+#### API Routes:
+- Ensure proper request validation, error handling, and logging
+- Use server-side actions to interact with any external services (e.g., sending emails from the contact form)
+
+#### Example API Route for Contact Form
+```typescript
+// app/api/contact.ts
+import type { NextApiRequest, NextApiResponse } from "next";
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
+
+  try {
+    const { name, email, message } = req.body;
+    // Validate input, send email or store submission, etc.
+    return res.status(200).json({ message: "Message sent successfully" });
+  } catch (error) {
+    console.error("Contact form error:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+```
+
+#### Type Safety in API:
+- Define request/response types in /types to keep consistency
+
+
+
+## 6. Additional Requirements
+
+### CMS Integration Rules
+- Use GROQ queries to fetch and filter data from Sanity.
+- Ensure Portable Text content is rendered properly with rich formatting.
+The project architecture is built around Sanity as the primary content source, enabling efficient content management via Sanity Studio.
+
+Example of a GROQ query:
+```ts
+export const singlePostQuery = groq`*[_type == "Post" && slug.current == $slug][0]{
+  ${postField},
+  _updatedAt,
+  canonicalLink,
+  date,
+  tags,
+  "author": author-> {
+    name, 
+    photo {
+      "image": asset->url,
+      alt
+    }, 
+    twitterUrl
+  },
+  body,
+}`;
+```
+
+### Backend Rules
+- Maintain strict TypeScript notation, avoiding `any` or non-null assertions.
+- Define reusable types in the `types/` directory.
+- Optimize database queries for minimal latency.
+
+Example of a type:
+```ts
+export type PostType = {
+  _id: string;
+  _createdAt: string;
+  _updatedAt?: string;
+  title: string;
+  slug: string;
+  description: string;
+  canonicalLink?: string;
+  date?: string;
+  coverImage: {
+    image: string;
+    lqip: string;
+    alt: string | null;
+  };
+  tags: string[];
+  author: {
+    name: string;
+    photo: {
+      image: string;
+      alt: string;
+    };
+    twitterUrl: string;
+  };
+  body: PortableTextBlock[];
+  featured: boolean;
+  isPublished: boolean;
+};
+```
+
+### Project Setup & Deployment:
+- All new components and pages must follow the outlined folder structure
+- Use Vercel for seamless deployment. Ensure next.config.mjs is updated for environment-specific configurations
+- Commit environment variables in .env.example only; never commit .env.local
+
+### Error Handling & Logging:
+- Implement robust error handling for both client and server code
+- Log errors on the server for debugging and show user-friendly error messages on the client side
+
+
+### Component Structure & UI Consistency:
+- Separate concerns clearly between UI, hooks, and utility functions
+- Use shadcn UI and Tailwind CSS to maintain consistent design language
+
+### Workflow Tracking Rules Documentation
+- Always refer to the `changelog.md` file in the project directory before starting or advising on any tasks.
+- Use the `changelog.md` file to understand completed steps and ensure the current task aligns with progress made.
+- Log detailed notes in the `changelog.md` file after each completed task to keep track of changes, decisions, and outcomes.
+- Document new components, hooks, and API endpoints using inline comments and changelog.md updates
+- Ensure any third-party integrations (if added later) are clearly documented

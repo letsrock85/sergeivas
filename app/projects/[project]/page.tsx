@@ -7,6 +7,7 @@ import { CustomPortableText } from "@/app/components/shared/CustomPortableText";
 import { Slide } from "../../animation/Slide";
 import { urlFor } from "@/lib/sanity.image";
 import { sanityFetch } from "@/lib/sanity.client";
+import { Globe } from "@phosphor-icons/react/dist/ssr";
 
 type Props = {
   params: {
@@ -62,13 +63,20 @@ export default async function Project({ params }: Props) {
               href={project.projectUrl}
               rel="noreferrer noopener"
               target="_blank"
-              className={`dark:bg-primary-bg bg-secondary-bg dark:text-white text-zinc-700 border border-transparent rounded-md px-4 py-2 ${
+              className={`dark:bg-primary-bg bg-secondary-bg dark:text-white text-zinc-700 border border-transparent rounded-md px-4 py-2 flex items-center gap-2 ${
                 !project.projectUrl
                   ? "cursor-not-allowed opacity-80"
                   : "cursor-pointer hover:border-zinc-700"
               }`}
             >
-              {project.projectUrl ? "Explore" : "Coming Soon"}
+              {project.projectUrl ? (
+                <>
+                  <Globe className="w-4 h-4" />
+                  <span>Explore</span>
+                </>
+              ) : (
+                "Coming Soon"
+              )}
             </a>
           </div>
 
