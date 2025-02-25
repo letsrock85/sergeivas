@@ -26,7 +26,7 @@ export const socialLinks = [
   {
     id: 2,
     name: "X",
-    url: "https://twitter.com/sergeivasa",
+    url: "https://x.com/letsrock_85",
     icon: FaSquareXTwitter,
     status: "social",
   },
