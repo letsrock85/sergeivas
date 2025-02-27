@@ -4,7 +4,7 @@ import { buildLegacyTheme } from 'sanity'
 const props = {
   '--main-navigation-item-height': '78px',
   '--card-padding-large': '124px',          // Увеличиваем отступы карточек
-  '--list-item-height': '178px',            // Высота элементов списка
+  '--list-item-height': '78px',            // Высота элементов списка
   '--selectable-item-height': '178px',      // Высота выбираемых элементов
   '--small-button-height': '138px',         // Высота маленьких кнопок
   '--large-button-height': '160px',         // Высота больших кнопок
