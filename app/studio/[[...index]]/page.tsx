@@ -1,4 +1,6 @@
 // This is where the studio component is mounted.
+"use client";
+
 import dynamic from "next/dynamic";
 import config from "@/sanity.config";
 

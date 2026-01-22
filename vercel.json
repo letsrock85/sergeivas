@@ -1,18 +1,7 @@
 {
   "functions": {
-    "api/**/*": {
+    "app/api/**/*": {
       "maxDuration": 30
     }
-  },
-  "headers": [
-    {
-      "source": "/studio/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        }
-      ]
-    }
-  ]
+  }
 }
