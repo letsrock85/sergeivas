@@ -2,33 +2,6 @@ import { revalidatePath, revalidateTag } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
 import crypto from 'crypto'
 
-function verifySignature(req: NextRequest, body: string): boolean {
-  const secret = process.env.SANITY_HOOK_SECRET
-  if (!secret) {
-    console.log('[revalidate-path] No SANITY_HOOK_SECRET configured, skipping signature verification')
-    return true
-  }
-
-  const signature = req.headers.get('x-sanity-signature')
-  if (!signature) {
-    console.log('[revalidate-path] No x-sanity-signature header found')
-    return false
-  }
-
-  const hmac = crypto.createHmac('sha256', secret)
-  hmac.update(body, 'utf8')
-  const expectedSignature = `sha256=${hmac.digest('hex')}`
-
-  if (signature !== expectedSignature) {
-    console.log('[revalidate-path] Signature mismatch')
-    console.log('Expected:', expectedSignature)
-    console.log('Got:', signature)
-    return false
-  }
-
-  return true
-}
-
 const TAG_MAP: Record<string, string> = {
   Post: 'Post',        // Sanity _type is "Post", not "blogPost"
   blogPost: 'Post',    // Keep for backwards compatibility
@@ -39,13 +12,30 @@ const TAG_MAP: Record<string, string> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json()
-    const bodyString = JSON.stringify(body)
-
+    // Read raw body first for signature verification
+    const rawBody = await req.text()
+    
     const secret = process.env.SANITY_HOOK_SECRET
-    if (secret && !verifySignature(req, bodyString)) {
-      return NextResponse.json({ error: 'Invalid signature' }, { status: 401 })
+    if (secret) {
+      const signature = req.headers.get('x-sanity-signature')
+      if (!signature) {
+        console.log('[revalidate-path] No signature header')
+        return NextResponse.json({ error: 'Missing signature' }, { status: 401 })
+      }
+      
+      const hmac = crypto.createHmac('sha256', secret)
+      hmac.update(rawBody, 'utf8')
+      const expectedSignature = `sha256=${hmac.digest('hex')}`
+      
+      if (signature !== expectedSignature) {
+        console.log('[revalidate-path] Signature mismatch')
+        console.log('Expected:', expectedSignature)
+        console.log('Got:', signature)
+        return NextResponse.json({ error: 'Invalid signature' }, { status: 401 })
+      }
     }
+
+    const body = JSON.parse(rawBody)
 
     if (!body?._type) {
       return NextResponse.json({ error: 'Missing _type' }, { status: 400 })

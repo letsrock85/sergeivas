@@ -52,9 +52,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         post.canonicalLink || `https://sergeivas.com/blog/${post.slug}`,
     },
     openGraph: {
-      images:
-        urlFor(post.coverImage?.image).width(1200).height(630).url() ||
-        fallbackImage,
+      images: post.coverImage?.image
+        ? urlFor(post.coverImage.image).width(1200).height(630).url()
+        : fallbackImage,
       url: `https://sergeivas.com/blog/${post.slug}`,
       title: post.title,
       description: post.description,
@@ -68,11 +68,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       title: post.title,
       description: post.description,
-      images:
-        urlFor(post.coverImage?.image).width(680).height(340).url() ||
-        fallbackImage,
-      creator: `@${post.author.twitterUrl.split("twitter.com/")[1]}`,
-      site: `@${post.author.twitterUrl.split("twitter.com/")[1]}`,
+      images: post.coverImage?.image
+        ? urlFor(post.coverImage.image).width(680).height(340).url()
+        : fallbackImage,
+      creator: post.author?.twitterUrl ? `@${post.author.twitterUrl.split("twitter.com/")[1]}` : undefined,
+      site: post.author?.twitterUrl ? `@${post.author.twitterUrl.split("twitter.com/")[1]}` : undefined,
       card: "summary_large_image",
     },
   };
@@ -157,29 +157,33 @@ export default async function Post({ params }: Props) {
                 Written By
               </p>
               <address className="flex items-center gap-x-3 mt-4 not-italic">
-                <div className="relative w-12 h-12">
-                  <Image
-                    src={urlFor(post.author.photo.image)
-                      .width(80)
-                      .height(80)
-                      .url()}
-                    alt={post.author.photo.alt}
-                    layout="fill"
-                    className="bg-zinc-300 dark:bg-zinc-800 rounded-full object-cover"
-                  />
-                </div>
+                {post.author?.photo?.image && (
+                  <div className="relative w-12 h-12">
+                    <Image
+                      src={urlFor(post.author.photo.image)
+                        .width(80)
+                        .height(80)
+                        .url()}
+                      alt={post.author.photo.alt || post.author.name}
+                      layout="fill"
+                      className="bg-zinc-300 dark:bg-zinc-800 rounded-full object-cover"
+                    />
+                  </div>
+                )}
                 <div rel="author">
                   <h3 className="font-semibold text-lg tracking-tight">
                     {post.author.name}
                   </h3>
-                  <a
-                    href={post.author.twitterUrl}
-                    className="text-blue-500 text-sm"
-                    rel="noreferrer noopener"
-                    target="_blank"
-                  >
-                    {`@${post.author.twitterUrl.split("twitter.com/")[1]}`}
-                  </a>
+                  {post.author?.twitterUrl && (
+                    <a
+                      href={post.author.twitterUrl}
+                      className="text-blue-500 text-sm"
+                      rel="noreferrer noopener"
+                      target="_blank"
+                    >
+                      {`@${post.author.twitterUrl.split("twitter.com/")[1]}`}
+                    </a>
+                  )}
                 </div>
               </address>
             </section>
