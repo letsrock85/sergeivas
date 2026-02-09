@@ -20,9 +20,9 @@ import { readTime } from "@/app/utils/readTime";
 import PageHeading from "@/app/components/shared/PageHeading";
 
 type Props = {
-  params: {
+  params: Promise<{
     post: string;
-  };
+  }>;
 };
 
 const fallbackImage: string =
@@ -30,7 +30,7 @@ const fallbackImage: string =
 
 // Dynamic metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.post;
+  const { post: slug } = await params;
   const post: PostType = await sanityFetch({
     query: singlePostQuery,
     tags: ["Post"],
@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Post({ params }: Props) {
-  const slug = params.post;
+  const { post: slug } = await params;
   const post: PostType = await sanityFetch({
     query: singlePostQuery,
     tags: ["Post"],
@@ -210,7 +210,7 @@ export default async function Post({ params }: Props) {
               <h3 className="mb-4 font-semibold text-xl tracking-tight">
                 Featured
               </h3>
-              <FeaturedPosts params={params.post} />
+              <FeaturedPosts params={slug} />
             </section>
           </aside>
         </Slide>

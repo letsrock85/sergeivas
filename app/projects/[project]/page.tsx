@@ -9,9 +9,9 @@ import { urlFor } from "@/lib/sanity.image";
 import { sanityFetch } from "@/lib/sanity.client";
 
 type Props = {
-  params: {
+  params: Promise<{
     project: string;
-  };
+  }>;
 };
 
 const fallbackImage: string =
@@ -19,7 +19,7 @@ const fallbackImage: string =
 
 // Dynamic metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.project;
+  const { project: slug } = await params;
   const project: ProjectType = await sanityFetch({
     query: singleProjectQuery,
     tags: ["project"],
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Project({ params }: Props) {
-  const slug = params.project;
+  const { project: slug } = await params;
   const project: ProjectType = await sanityFetch({
     query: singleProjectQuery,
     tags: ["project"],
