@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
     const tag = TAG_MAP[type]
 
     if (tag) {
-      revalidateTag(tag, 'page')
+      revalidateTag(tag, 'default')
       console.log(`[revalidate-path] Revalidated tag: ${tag}`)
     }
 
