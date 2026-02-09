@@ -30,7 +30,8 @@ function verifySignature(req: NextRequest, body: string): boolean {
 }
 
 const TAG_MAP: Record<string, string> = {
-  blogPost: 'Post',
+  Post: 'Post',        // Sanity _type is "Post", not "blogPost"
+  blogPost: 'Post',    // Keep for backwards compatibility
   project: 'Project',
   author: 'Author',
   page: 'Page',
